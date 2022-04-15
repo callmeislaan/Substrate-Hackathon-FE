@@ -77,3 +77,5 @@ $ yarn start
 ```
 
 > Only folder `.next`, `node_modules` and file `package.json` are required to run production.
+# Substrate-Hackathon-FE
+Front end repository for substrate hackathon
