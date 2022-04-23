@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Form, Input, Grid } from 'semantic-ui-react'
 import { TxButton } from './substrate-lib/components'
 
-export default function Main(props) {
+export default function Main() {
   const [status, setStatus] = useState('')
   const [proposal, setProposal] = useState({})
 
@@ -14,7 +14,7 @@ export default function Main(props) {
 
   const handleFileChosen = file => {
     const fileReader = new FileReader()
-    fileReader.onloadend = e => {
+    fileReader.onloadend = () => {
       const content = bufferToHex(fileReader.result)
       setProposal(`0x${content}`)
     }

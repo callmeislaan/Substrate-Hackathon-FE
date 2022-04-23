@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Grid, Form, Dropdown, Input, Label } from 'semantic-ui-react'
+import PropTypes from 'prop-types'
 
 import { useSubstrateState } from './substrate-lib'
 import { TxButton, TxGroupButton } from './substrate-lib/components'
 
 const argIsOptional = arg => arg.type.toString().startsWith('Option<')
 
-function Main(props) {
+function Main() {
   const { api, jsonrpc } = useSubstrateState()
   const [status, setStatus] = useState(null)
 
@@ -273,6 +274,9 @@ function InteractorSubmit(props) {
   }
 }
 
+InteractorSubmit.propTypes = {
+    attrs: PropTypes.object
+}
 export default function Interactor(props) {
   const { api } = useSubstrateState()
   return api.tx ? <Main {...props} /> : null

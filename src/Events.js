@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Feed, Grid, Button } from 'semantic-ui-react'
+import PropTypes from 'prop-types'
 
 import { useSubstrateState } from './substrate-lib'
 
@@ -64,7 +65,7 @@ function Main(props) {
         color="grey"
         floated="right"
         icon="erase"
-        onClick={_ => setEventFeed([])}
+        onClick={() => setEventFeed([])}
       />
       <Feed
         style={{ clear: 'both', overflow: 'auto', maxHeight: feedMaxHeight }}
@@ -72,6 +73,10 @@ function Main(props) {
       />
     </Grid.Column>
   )
+}
+
+Main.propTypes = {
+    feedMaxHeight: PropTypes.number,
 }
 
 export default function Events(props) {

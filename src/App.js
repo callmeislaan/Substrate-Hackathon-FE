@@ -1,4 +1,4 @@
-import React, { createRef } from 'react'
+import { createRef } from 'react'
 import {
   Container,
   Dimmer,
@@ -8,6 +8,10 @@ import {
   Message,
 } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
+import CssBaseline from '@mui/material/CssBaseline'
+import { ThemeProvider } from '@mui/material/styles'
+import createTheme from './theme'
+import Layout from './components/Layout/index.tsx'
 
 import { SubstrateContextProvider, useSubstrateState } from './substrate-lib'
 import { DeveloperConsole } from './substrate-lib/components'
@@ -94,7 +98,12 @@ function Main() {
 export default function App() {
   return (
     <SubstrateContextProvider>
-      <Main />
+        <ThemeProvider theme={createTheme()}>
+            <CssBaseline />
+            <Layout>
+                <Main />
+            </Layout>
+      </ThemeProvider>
     </SubstrateContextProvider>
   )
 }

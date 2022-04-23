@@ -163,6 +163,7 @@ const SubstrateContextProvider = props => {
 // prop typechecking
 SubstrateContextProvider.propTypes = {
   socket: PropTypes.string,
+  children: PropTypes.any,
 }
 
 const useSubstrate = () => useContext(SubstrateContext)

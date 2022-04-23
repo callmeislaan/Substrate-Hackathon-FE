@@ -3,9 +3,17 @@ import PropTypes from 'prop-types'
 import { Button } from 'semantic-ui-react'
 import { web3FromSource } from '@polkadot/extension-dapp'
 
-import { useSubstrateState } from '../'
+import { useSubstrateState } from '..'
 import utils from '../utils'
 
+TxButton.propTypes = {
+    label: PropTypes.string,
+    type: PropTypes.string,
+    style: PropTypes.any,
+    color: PropTypes.string,
+    disabled: PropTypes.bool,
+    txOnClickHandler: PropTypes.func,
+}
 function TxButton({
   attrs = null,
   color = 'blue',
@@ -64,7 +72,7 @@ function TxButton({
       ? setStatus(`😉 Finalized. Block hash: ${status.asFinalized.toString()}`)
       : setStatus(`Current transaction status: ${status.type}`)
 
-  const txErrHandler = err =>
+  const txErrHandler = (err) =>
     setStatus(`😞 Transaction Failed: ${err.toString()}`)
 
   const sudoTx = async () => {
@@ -123,7 +131,7 @@ function TxButton({
     setUnsub(() => unsub)
   }
 
-  const queryResHandler = result =>
+  const queryResHandler = (result) =>
     result.isNone ? setStatus('None') : setStatus(result.toString())
 
   const query = async () => {
@@ -169,7 +177,9 @@ function TxButton({
       (isRpc() && rpc) ||
       (isConstant() && constant)
 
-    await asyncFunc()
+      if (asyncFunc) {
+          await asyncFunc()
+      }
 
     return txOnClickHandler && typeof txOnClickHandler === 'function'
       ? txOnClickHandler(unsub)
@@ -183,7 +193,7 @@ function TxButton({
   ) => {
     // if `opts.emptyAsNull` is true, empty param value will be added to res as `null`.
     //   Otherwise, it will not be added
-    const paramVal = inputParams.map(inputParam => {
+    const paramVal = inputParams.map((inputParam) => {
       // To cater the js quirk that `null` is a type of `object`.
       if (
         typeof inputParam === 'object' &&
@@ -253,7 +263,7 @@ function TxButton({
     })
   }
 
-  const isSudoer = acctPair => {
+  const isSudoer = (acctPair) => {
     if (!sudoKey || !acctPair) {
       return false
     }

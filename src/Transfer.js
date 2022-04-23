@@ -3,7 +3,7 @@ import { Form, Input, Grid, Label, Icon, Dropdown } from 'semantic-ui-react'
 import { TxButton } from './substrate-lib/components'
 import { useSubstrateState } from './substrate-lib'
 
-export default function Main(props) {
+export default function Main() {
   const [status, setStatus] = useState(null)
   const [formState, setFormState] = useState({ addressTo: '', amount: 0 })
 
