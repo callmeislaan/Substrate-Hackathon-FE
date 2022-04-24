@@ -1,0 +1,39 @@
+.pagination{
+  justify-content: flex-end;
+}
+// #pills-tabContent .pagination li {
+//   background-color: #242526;
+//   position: relative;
+//   display: block;
+//   padding: 0.5rem 0.75rem;
+//   line-height: 1.25;
+//   border-radius: 0.55rem;
+//   margin-left: 0.5rem;
+//   min-width: 35px;
+//   text-align: center;
+// }
+// #pills-tabContent .pagination .page-item.active {
+//   border-radius: 0.55rem;
+//   background-color: #3a3b3c;
+// }
+
+.pagination li a {
+  background-color: #242526;
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  line-height: 1.25;
+  border-radius: 0.55rem;
+  margin-left: 0.5rem;
+  min-width: 35px;
+  text-align: center;
+}
+
+.pagination .page-item.active a {
+  border-radius: 0.55rem;
+  background-color: #3a3b3c;
+}
+
+.pagination .page-item a{
+  color: white;
+}

@@ -1,0 +1,29 @@
+.right {
+  .menu {
+    a {
+      color: #b0b3b8;
+    }
+
+    .nav-pills {
+      .nav-link {
+        background-color: #242526;
+        border-radius: 0.55rem;
+        font-weight: 500;
+
+        &:hover {
+          background-color: #3a3b3c;
+        }
+      }
+
+      .nav-link.active,
+      .show > .nav-link {
+        color: #fff !important;
+        background-color: #3a3b3c;
+      }
+    }
+
+    .nav-link {
+      padding: 0.65rem 1rem;
+    }
+  }
+}

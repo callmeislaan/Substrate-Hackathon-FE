@@ -1,0 +1,16 @@
+$color-text-button: #d0d0d0;
+
+.btn-anest {
+    color: $color-text-button;
+    background-color: #242526;
+    border: 1px solid #242526;
+    border-radius: .5rem;
+    transition: .3s;
+    padding: .5rem 1rem;
+
+    &:hover {
+        text-decoration: none;
+        background-color: #3a3b3c;
+        border: 1px solid #3a3b3c;
+    }
+}

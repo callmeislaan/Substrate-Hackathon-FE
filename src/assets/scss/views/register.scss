@@ -1,0 +1,100 @@
+.register-page {
+  margin: 0 -1.5rem -1.5rem -1.5rem;
+}
+
+.register-block {
+  background-image: url("~@/assets/images/register.jpg");
+}
+.h100{
+  height: 100%;
+}
+.pd25{
+  padding: 2.5rem;
+}
+
+.style-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.btn-primary {
+  color: #fff;
+  background: #00acac;
+  border-color: #00acac;
+  width: 100%;
+}
+
+.control-label {
+  font-weight: 600;
+  color: #242a30;
+  padding-top: 1rem;
+}
+
+.control-label {
+  padding-left: 1rem;
+}
+
+.form-control {
+  font-size: 12px;
+  height: 34px;
+}
+
+.col-md-6 {
+  padding-right: 0;
+}
+
+.col-md-12 {
+  padding-right: 0;
+}
+
+.parsley-error {
+  background: #fff !important;
+  border-color: #ff5b57 !important;
+}
+
+.parsley-errors-list.filled {
+  opacity: 1;
+}
+
+.parsley-errors-list.filled {
+  margin-top: 5px !important;
+}
+
+.parsley-errors-list {
+  padding: 0 !important;
+  list-style-type: none !important;
+  margin: 0 !important;
+  color: #e5603b;
+  font-size: 12px !important;
+  line-height: inherit !important;
+}
+
+#address {
+  padding-top: 5px;
+}
+
+.btn-login {
+  padding-left: 15px;
+}
+
+.form-check-label {
+  padding-top: 3px;
+}
+
+.checkbox-remember {
+  padding-left: 35px;
+  padding-top: 1rem;
+}
+
+.m-t-20 {
+  margin-top: 20px;
+}
+
+.p-l-15 {
+  padding-left: 15px;
+}
+
+.title {
+  text-align: center;
+}

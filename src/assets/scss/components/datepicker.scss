@@ -1,0 +1,75 @@
+$namespace: 'anest';
+$default-color: #aaa;
+$primary-color:#4e5052;
+$input-color: #aaa;
+$input-hover-border-color: transparent;
+$border-color: transparent;
+$calendar-hover-color: #fff;
+$calendar-hover-background-color: #4e5052;
+$time-hover-background-color: #4e5052;
+$time-active-color: #aaa;
+$time-active-background-color: #4e5052;
+
+@import '~vue2-datepicker/scss/index.scss';
+
+.#{$namespace}-input {
+  background-color: transparent;
+  border: none;
+  height: 30px;
+  border: 1px solid transparent;
+  box-shadow: none;
+}
+
+.#{$namespace}-datepicker {
+  width: 100%;
+}
+
+.#{$namespace}-datepicker-main {
+  background-color: #18191A;
+  border-radius: 0.45rem;
+}
+
+.#{$namespace}-table-date {
+  .cell.not-current-month {
+    color: rgb(104, 104, 104);
+  }
+}
+
+.#{$namespace}-calendar-content {
+  .cell {
+    border-radius: 0.45rem;
+
+    &.disabled {
+      background: #18191A;
+      color: #373737;
+    }
+
+    &.active {
+      font-weight: 500;
+    }
+  }
+}
+
+.#{$namespace}-time {
+  border-radius: 0.45rem;
+  background: #18191A;
+}
+
+.#{$namespace}-icon-calendar,
+.#{$namespace}-icon-clear {
+  color: #aaa;
+}
+
+.#{$namespace}-time-column {
+  .#{$namespace}-time-item {
+    &.disabled {
+      background: #18191A;
+      color: #373737;
+    }
+
+    &:hover,
+    &.active {
+      border-radius: 0.45rem;
+    }
+  }
+}

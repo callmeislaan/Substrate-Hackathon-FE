@@ -1,0 +1,311 @@
+// body {
+//   /* background: url(../../images/system/bg.png) #121212; */
+// }
+
+/*----- Profile CV -----*/
+
+.left .profile {
+  padding: 0;
+}
+
+.left .profile .profile-name {
+  padding: 1rem 1.25rem 0.85rem;
+}
+
+.left .profile .name {
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.left .profile .username {
+  font-size: 0.85rem;
+  margin-bottom: 0;
+}
+
+.left figure {
+  margin: 0;
+}
+
+.left .profile-image {
+  margin-top: -1rem;
+  -webkit-clip-path: polygon(0 9%, 100% 0, 100% 94%, 0% 100%);
+  clip-path: polygon(0 9%, 100% 0, 100% 94%, 0% 100%);
+}
+
+.left .profile-image img {
+  width: 100%;
+}
+
+.left ul.profile-information {
+  list-style: none;
+  margin: 0.25rem 0 0;
+  padding-left: 1.5rem;
+}
+
+.left ul.profile-information li {
+  border-left: solid 2px #c7af8b;
+  padding: 0 0 23px 20px;
+  color: #c7af8b;
+}
+
+.left ul.profile-information li p {
+  color: #e4e6eb;
+  line-height: 12px;
+  margin-bottom: 0;
+}
+
+.left ul.profile-information li:last-child {
+  border: 0;
+  margin-left: 2px;
+  margin-top: -2px;
+}
+
+.left ul.profile-information li:before {
+  content: "";
+  border: solid 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50px;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  font-size: 8px;
+  margin-left: -25px;
+  margin-top: 2px;
+  font-weight: 400;
+  background: #1d1d1d;
+  display: block;
+  position: absolute;
+}
+
+.left ul.profile-information li span {
+  color: #c7af8b;
+}
+
+.left ul.profile-information li:first-child {
+  margin-top: -9px;
+}
+
+.left ul.profile-information li:first-child::before {
+  display: none;
+}
+
+/*----- Social Section -----*/
+
+.left .social {
+  padding: 0.25rem 1.25rem 1.25rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left .social div {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #3a3b3c;
+  border-radius: 50%;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.left .social div:hover {
+  background-color: #4e4f50;
+}
+
+.left .social div a {
+  font-size: 1.125rem;
+  color: #e4e6eb;
+  pointer-events: auto;
+}
+
+/*----- Action Section -----*/
+
+.left .bi::before {
+  font-weight: 700;
+}
+
+.left .action {
+  padding: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left .action .action-btn {
+  text-align: center;
+  width: 100%;
+  transition: 0.3s;
+}
+
+.left .action .action-btn:hover {
+  background-color: #3a3b3c;
+  border-radius: 0.45rem;
+}
+
+.left .action .action-btn a {
+  color: #e4e6eb;
+  font-weight: 500;
+}
+
+/*----- Rate Section -----*/
+
+.left .rate {
+  padding: 1rem 1.25rem;
+  width: 100%;
+  display: flex;
+}
+
+.left .rate h1 {
+  line-height: 1;
+  margin-bottom: 0.275rem;
+  font-weight: 400;
+}
+
+.left .rate svg {
+  font-size: 0.75rem;
+  color: #ffc107;
+  margin-right: 0.25rem;
+}
+
+.left .rate .mt-progress {
+  margin-top: 0.45rem;
+}
+
+.left .rate .reviews {
+  font-size: 0.8rem;
+  color: #888;
+  font-style: italic;
+  margin-top: 0.1rem;
+}
+
+.left .rate .number {
+  font-size: 0.75rem;
+  margin-top: -8px;
+  margin-right: 0.25rem;
+  width: 1rem;
+}
+
+/*----- Overview -----*/
+
+/*----- Tab content -----*/
+
+.right #pills-tabContent h6 {
+  margin: 1.25rem 0 0.5rem;
+  font-size: 0.95rem;
+}
+
+.right #pills-tabContent p {
+  margin-bottom: 0;
+}
+
+/* ----- Tab content ui ----- */
+
+.right .tab-content .content {
+  padding: 1rem 1rem 1rem 1.25rem;
+  margin-bottom: 1rem;
+}
+
+/*----- Tab content - Info -----*/
+
+.right .tab-content fieldset {
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.25rem 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.right .tab-content legend {
+  background-color: #3a3b3c;
+  width: auto;
+  max-width: 100%;
+  font-size: 1rem;
+  padding: 0.25rem 0.85rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0;
+}
+
+.right .tab-content fieldset .media img {
+  width: 3.5rem;
+  border-radius: 50%;
+}
+
+.right .tab-content fieldset .media .media-body h5 {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  margin-bottom: 0.125rem;
+}
+
+.right .tab-content fieldset .media .media-body p {
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.right .tab-content .skills {
+  margin-bottom: 0.25rem;
+}
+
+/* ----- Tab content - Comment ----- */
+
+.right .tab-content .media {
+  margin-bottom: 1rem;
+}
+
+.right .tab-content .media:last-child {
+  margin-bottom: 0;
+}
+
+.right .tab-content .media .rent-time {
+  margin-top: 0.5rem;
+  font-size: 14px;
+  color: #b0b3b8;
+}
+
+.right .tab-content #pills-comment .media-body {
+  background-color: #3a3b3c;
+  padding: 0.75rem 1rem;
+}
+
+.right .tab-content #pills-comment .media-body hr {
+  border-top: 1px solid #585858;
+  margin-top: 0.55rem;
+  margin-bottom: 0.5rem;
+}
+
+.right .tab-content #pills-comment .media-body .comment-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.right .tab-content #pills-comment .media-body .comment-info .time {
+  font-size: 14px;
+  color: #b0b3b8;
+}
+
+.right .tab-content #pills-comment .media-body .comment-info .rate svg {
+  font-size: 0.75rem;
+  color: #ffc107;
+  margin-left: 0.25rem;
+}
+
+.right .tab-content #pills-comment .pagination .page-item {
+  background-color: #242526;
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  line-height: 1.25;
+  border-radius: 0.55rem;
+  margin-left: 0.5rem;
+  min-width: 35px;
+  text-align: center;
+}
+
+.right .tab-content #pills-comment .pagination .page-item.active {
+  background-color: #3a3b3c;
+}

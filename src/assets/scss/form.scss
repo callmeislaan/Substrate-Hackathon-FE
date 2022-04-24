@@ -1,0 +1,64 @@
+.right {
+  form {
+    fieldset {
+      border: 2px solid #3a3b3c;
+      padding: 0 0.75rem 0.5rem;
+      border-radius: 0.45rem;
+
+      legend {
+        background-color: #242526;
+        width: auto;
+        max-width: 100%;
+        font-size: 0.9rem;
+        padding: 0 0.5rem;
+        border-radius: 0.45rem;
+        margin-bottom: 0;
+        font-weight: 500;
+        color: #b0b3b8;
+      }
+
+      .form-control {
+        color: #b0b3b8;
+        border: 1px solid transparent;
+        background-color: transparent;
+        padding: 0 0.5rem;
+        height: calc(1em + 0.75rem + 2px);
+
+        &:disabled,
+        &[readonly] {
+          background-color: transparent;
+        }
+
+        &:focus {
+          color: #b0b3b8;
+          box-shadow: none;
+          border-color: transparent;
+          background-color: transparent;
+        }
+      }
+      textarea.form-control {
+        height: auto !important;
+      }
+    }
+  }
+
+  label.custom-control-label {
+    font-weight: normal;
+  }
+
+  .custom-control-label::before {
+    background-color: #3a3b3c;
+    border: #555 solid 1px;
+  }
+
+  .custom-control-input:checked ~ .custom-control-label::before {
+    color: #e4e6eb;
+    border-color: #555;
+    background-color: #555;
+  }
+
+  // input[type="date"]::-webkit-calendar-picker-indicator {
+  //   background: url(../../assets/images/system/calendar.png) center/80%;
+  //   background-repeat: no-repeat;
+  // }
+}
