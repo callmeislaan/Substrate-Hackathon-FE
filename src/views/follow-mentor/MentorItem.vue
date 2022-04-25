@@ -10,7 +10,7 @@
           ? mentorFollowing.price.toLocaleString("vi-VI")
           : 0
       }}
-      VND
+      UNIT
       <div class="bookmark" @click="toggleFollowRequest(mentorFollowing.id)">
         <font-awesome-icon
           class="text-warning"

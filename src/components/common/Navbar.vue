@@ -110,7 +110,7 @@
                         : userFinanceOverview.totalBudgetCurrent
                       ).toLocaleString("vi-VI")
                     }}
-                    VND
+                    UNIT
                   </span>
                 </a>
               </li>

@@ -105,7 +105,7 @@ export default class PendingMentor extends Vue {
       .fire({
         title: `<span>Bạn sẽ bị trừ ${this.request.price.toLocaleString(
           "vi-VN"
-        )}<sup>đ</sup> khi xác nhận thuê mentor</span>`
+        )}<sup>UNIT</sup> khi xác nhận thuê mentor</span>`
       })
       .then(result => {
         if (result.isConfirmed) {

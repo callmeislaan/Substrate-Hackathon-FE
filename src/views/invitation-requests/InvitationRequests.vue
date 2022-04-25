@@ -36,7 +36,7 @@
                       userFinanceOverview.totalBudgetCurrent.toLocaleString(
                         "vi-VI"
                       )
-                    }}<sup>đ</sup>
+                    }}<sup>UNIT</sup>
                   </h4>
                 </div>
               </div>
@@ -75,7 +75,7 @@
                   <h4>
                     {{
                       userFinanceOverview.totalBudgetIn.toLocaleString("vi-Vi")
-                    }}<sup>đ</sup>
+                    }}<sup>UNIT</sup>
                   </h4>
                 </div>
               </div>

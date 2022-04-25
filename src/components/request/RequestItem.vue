@@ -6,7 +6,7 @@
   >
     <div class="price">
       {{ request.price ? request.price.toLocaleString("vi-VI") : 0 }}
-      VND
+      UNIT
       <div
         v-if="
           AuthInstance.currentUser &&

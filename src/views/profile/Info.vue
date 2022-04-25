@@ -378,7 +378,7 @@
                                     "vi-VI"
                                   )
                                 : 0
-                            }}<sup>đ</sup>
+                            }}<sup>UNIT</sup>
                           </h4>
                         </div>
                       </div>
@@ -422,7 +422,7 @@
                               mentorIncomeReport.dailyIncome.toLocaleString(
                                 "vi-VN"
                               )
-                            }}<sup>đ</sup>
+                            }}<sup>UNIT</sup>
                           </h4>
                         </div>
                       </div>
@@ -459,7 +459,7 @@
                               mentorIncomeReport.weeklyIncome.toLocaleString(
                                 "vi-VN"
                               )
-                            }}<sup>đ</sup>
+                            }}<sup>UNIT</sup>
                           </h4>
                         </div>
                       </div>
@@ -496,7 +496,7 @@
                               mentorIncomeReport.monthlyIncome.toLocaleString(
                                 "vi-VN"
                               )
-                            }}<sup>đ</sup>
+                            }}<sup>UNIT</sup>
                           </h4>
                         </div>
                       </div>

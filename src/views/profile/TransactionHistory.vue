@@ -126,7 +126,7 @@
                               transaction.amount
                                 ? transaction.amount.toLocaleString("vi-VI")
                                 : 0
-                            }}<sup>đ</sup>
+                            }}<sup>UNIT</sup>
                           </td>
                           <td
                             :class="
@@ -227,7 +227,7 @@
                               transaction.amount
                                 ? transaction.amount.toLocaleString("vi-VI")
                                 : 0
-                            }}<sup>đ</sup>
+                            }}<sup>UNIT</sup>
                           </td>
                           <td
                             :class="
@@ -335,7 +335,7 @@
                               transaction.amount
                                 ? transaction.amount.toLocaleString("vi-VI")
                                 : 0
-                            }}<sup>đ</sup>
+                            }}<sup>UNIT</sup>
                           </td>
                           <!-- <td class="text-tomato">Thất bại</td> -->
                           <td

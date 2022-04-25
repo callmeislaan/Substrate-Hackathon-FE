@@ -118,28 +118,28 @@ extend("amount", {
   validate: value => {
     return value >= 10000;
   },
-  message: "Số tiền muốn rút cần lớn hơn hoặc bằng 10.000 VND"
+  message: "Số tiền muốn rút cần lớn hơn hoặc bằng 10.000 UNIT"
 });
 
 extend("amountOfCreateRequest", {
   validate: value => {
     return value >= 10000;
   },
-  message: "Số tiền trả cần lớn hơn hoặc bằng 10.000 VND"
+  message: "Số tiền trả cần lớn hơn hoặc bằng 10.000 UNIT"
 });
 
 extend("limitAmount", {
   validate: value => {
     return value <= 10000000;
   },
-  message: "Số tiền muốn rút cần nhỏ hơn hoặc bằng 10.000.000 VND"
+  message: "Số tiền muốn rút cần nhỏ hơn hoặc bằng 10.000.000 UNIT"
 });
 
 extend("limitAmountPaid", {
   validate: value => {
     return value <= 100000000;
   },
-  message: "Số tiền trả cần nhỏ hơn hoặc bằng 100.000.000 VND"
+  message: "Số tiền trả cần nhỏ hơn hoặc bằng 100.000.000 UNIT"
 });
 
 extend("limitTitleOfRequest", {
@@ -153,7 +153,7 @@ extend("priceOfMentor", {
   validate: value => {
     return value <= 10000000;
   },
-  message: "Giá cơ bản cần nhỏ hơn hoặc bằng 10.000.000 VND"
+  message: "Giá cơ bản cần nhỏ hơn hoặc bằng 10.000.000 UNIT"
 });
 
 extend("limitJob", {

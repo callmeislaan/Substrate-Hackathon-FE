@@ -18,7 +18,7 @@
       </div>
       <div class="card__footer">
         <div class="price">
-          <span>{{ data.price.toLocaleString("vi-VI") }}<sup>đ</sup></span>
+          <span>{{ data.price.toLocaleString("vi-VI") }}<sup>UNIT</sup></span>
         </div>
         <div class="media">
           <a href="" class="circle">

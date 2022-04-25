@@ -30,7 +30,7 @@
                       this.UserFinanceInstance.userFinanceOverview
                         .totalMoneyCurrent
                     )
-                  }}<sup>đ</sup>
+                  }}<sup>UNIT</sup>
                 </h4>
               </div>
             </div>

@@ -49,7 +49,7 @@
           <li>
             <p>
               <span>Giá thuê:</span>
-              {{ mentorInfo.price.toLocaleString("vi-VI") }}<sup>đ</sup>/h
+              {{ mentorInfo.price.toLocaleString("vi-VI") }}<sup>UNIT</sup>/h
             </p>
           </li>
         </ul>

@@ -6,7 +6,7 @@
   >
     <div class="price">
       {{ rentMentor.price ? rentMentor.price.toLocaleString("vi-VI") : 0 }}
-      VND
+      UNIT
     </div>
 
     <div class="media">

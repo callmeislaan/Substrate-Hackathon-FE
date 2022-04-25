@@ -1,0 +1,19 @@
+branch-defaults:
+  feature/change-toast:
+    environment: AnestFe-Env
+environment-defaults:
+  AnestFe-Env:
+    branch: null
+    repository: null
+global:
+  application_name: Anest-FE
+  default_ec2_keyname: anest-keypair
+  default_platform: Node.js 12 running on 64bit Amazon Linux 2
+  default_region: ap-southeast-1
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: null
+  sc: git
+  workspace_type: Application
