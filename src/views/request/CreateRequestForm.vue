@@ -15,7 +15,7 @@
                   v-tooltip.bottom="{
                     content: errors[0],
                     class:
-                      errors.length !== 0 ? 'anest-tooltip' : 'tooltip-hide'
+                      errors.length !== 0 ? 'anest-tooltip' : 'tooltip-hide',
                   }"
                 >
                   <legend>Tiêu đề</legend>
@@ -40,7 +40,7 @@
                   v-tooltip.bottom="{
                     content: errors[0],
                     class:
-                      errors.length !== 0 ? 'anest-tooltip' : 'tooltip-hide'
+                      errors.length !== 0 ? 'anest-tooltip' : 'tooltip-hide',
                   }"
                 >
                   <legend>Ngày hết hạn</legend>
@@ -66,7 +66,7 @@
                   v-tooltip.bottom="{
                     content: errors[0],
                     class:
-                      errors.length !== 0 ? 'anest-tooltip' : 'tooltip-hide'
+                      errors.length !== 0 ? 'anest-tooltip' : 'tooltip-hide',
                   }"
                 >
                   <legend>Giờ hết hạn</legend>
@@ -91,7 +91,7 @@
                   v-tooltip.bottom="{
                     content: errors[0],
                     class:
-                      errors.length !== 0 ? 'anest-tooltip' : 'tooltip-hide'
+                      errors.length !== 0 ? 'anest-tooltip' : 'tooltip-hide',
                   }"
                 >
                   <legend>Số tiền trả</legend>
@@ -111,7 +111,7 @@
                   v-tooltip.bottom="{
                     content: errors[0],
                     class:
-                      errors.length !== 0 ? 'anest-tooltip' : 'tooltip-hide'
+                      errors.length !== 0 ? 'anest-tooltip' : 'tooltip-hide',
                   }"
                 >
                   <legend>Nội dung yêu cầu</legend>
@@ -169,11 +169,15 @@ import DatePicker from "vue2-datepicker";
 import Swal from "sweetalert2";
 import { ToastError } from "@/mixins/sweetalert.mixin";
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// @ts-ignore
+import api from "../../connection.js";
+
 @Component({
   components: {
     ListSkill,
-    DatePicker
-  }
+    DatePicker,
+  },
 })
 export default class CreateRequestForm extends Vue {
   deadlineDate: string | null = null;
@@ -207,7 +211,7 @@ export default class CreateRequestForm extends Vue {
     userInfoResponse: null,
     mentorInfoResponse: null,
     confirmStatus: null,
-    startDoingTime: null
+    startDoingTime: null,
   };
 
   setDeadlineDate(dateTxt: string) {
@@ -240,15 +244,17 @@ export default class CreateRequestForm extends Vue {
       content: this.request.content,
       price: this.request.price,
       skillIds: this.request.skills
-        ? this.request.skills.map(skill => (skill ? skill.id : 0))
-        : []
+        ? this.request.skills.map((skill) => (skill ? skill.id : 0))
+        : [],
     };
     try {
+      const myapi = await api;
+      console.log("myapi", myapi);
       const response = await requestService.createRequest(params);
       if (response.status == 200) {
         this.$router.push({
           name: "RequestDetail",
-          params: { id: response.data.id }
+          params: { id: response.data.id },
         });
       }
     } catch (e) {
