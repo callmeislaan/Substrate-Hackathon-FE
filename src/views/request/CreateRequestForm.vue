@@ -170,7 +170,11 @@ import Swal from "sweetalert2";
 import { ToastError } from "@/mixins/sweetalert.mixin";
 import getPolkadotAPI from "../../connection";
 import { ApiPromise } from "@polkadot/api";
-
+import {
+  web3Accounts,
+  web3Enable,
+  web3FromSource,
+} from "@polkadot/extension-dapp";
 @Component({
   components: {
     ListSkill,
@@ -297,14 +301,36 @@ export default class CreateRequestForm extends Vue {
     };
     try {
       const api: ApiPromise = await getPolkadotAPI();
-      await api.tx["palletForum"]["createNewThread"]({
-        topic: 0,
-        title: [1],
-        content: [1],
-        priority: 0,
-        price: 1,
-        closeTime: 1,
-      });
+      await web3Enable("my cool dapp");
+      const allAccounts = await web3Accounts();
+      const account = allAccounts[0];
+      const injector = await web3FromSource(account.meta.source);
+      console.log("allAccounts", allAccounts);
+      await api.tx["palletForum"]
+        ["createNewThread"]({
+          topic: 0,
+          title: [1],
+          content: [1],
+          priority: 0,
+          price: 1,
+          closeTime: 1,
+        })
+        .signAndSend(
+          account.address,
+          { signer: injector.signer },
+          ({ status }) => {
+            if (status.isInBlock) {
+              console.log(
+                `Completed at block hash #${status.asInBlock.toString()}`
+              );
+            } else {
+              console.log(`Current status: ${status.type}`);
+            }
+          }
+        )
+        .catch((error: any) => {
+          console.log(":( transaction failed", error);
+        });
       this.apiQuerySystem.events((events: any) => {
         console.log(`\nReceived ${events.length} events:`);
 
