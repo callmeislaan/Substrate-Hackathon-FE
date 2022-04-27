@@ -353,12 +353,12 @@ export default class CreateRequestForm extends Vue {
         });
       });
       const response = await requestService.createRequest(params);
-      //   if (response.status == 200) {
-      //     this.$router.push({
-      //       name: "RequestDetail",
-      //       params: { id: response.data.id },
-      //     });
-      //   }
+      if (response.status == 200) {
+        this.$router.push({
+          name: "RequestDetail",
+          params: { id: response.data.id },
+        });
+      }
     } catch (e) {
       console.log(e);
 
