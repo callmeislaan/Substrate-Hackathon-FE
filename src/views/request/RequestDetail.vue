@@ -99,7 +99,7 @@
                     v-tooltip.bottom="{
                       content:
                         'Bạn có quyền huỷ mentor và nhận ngay lại tiền trong 5 phút',
-                      class: timeLeft > 0 ? 'anest-tooltip' : 'tooltip-hide'
+                      class: timeLeft > 0 ? 'anest-tooltip' : 'tooltip-hide',
                     }"
                     @click="
                       triggerModalConfirm(
@@ -174,8 +174,8 @@
                     class="confirm-status-text"
                     v-if="
                       request &&
-                        request.confirmStatus === 'REJECT' &&
-                        role === 'owner'
+                      request.confirmStatus === 'REJECT' &&
+                      role === 'owner'
                     "
                   >
                     Bạn đã đánh dấu yêu cầu này không được hoàn thành, đang chờ
@@ -185,8 +185,8 @@
                     class="confirm-status-text"
                     v-if="
                       request &&
-                        request.confirmStatus === 'CONFLICT' &&
-                        ['mentor-support', 'owner'].includes(role)
+                      request.confirmStatus === 'CONFLICT' &&
+                      ['mentor-support', 'owner'].includes(role)
                     "
                   >
                     Đã xảy ra bất đồng giữa mentor và mentee, vui lòng chờ phản
@@ -219,7 +219,7 @@
                 :request="request"
                 :users="[
                   this.request.userInfoResponse,
-                  this.request.mentorInfoResponse
+                  this.request.mentorInfoResponse,
                 ]"
               />
             </div>
@@ -288,6 +288,7 @@
 </template>
 
 <script lang="ts">
+// @ts-nochec
 import { Watch, Component, Vue } from "vue-property-decorator";
 import { getModule } from "vuex-module-decorators";
 
@@ -312,7 +313,7 @@ import Swal from "sweetalert2";
 import {
   ConfirmMixin,
   ToastError,
-  ToastSucess
+  ToastSucess,
 } from "@/mixins/sweetalert.mixin";
 
 @Component({
@@ -323,8 +324,8 @@ import {
     RequestItem,
     RatingRequestModal,
     InfoPanel,
-    ChatComponent
-  }
+    ChatComponent,
+  },
 })
 export default class RequestDetail extends Vue {
   RequestInstance = getModule(RequestModule, this.$store);
@@ -369,9 +370,9 @@ export default class RequestDetail extends Vue {
   triggerModalConfirm(title: string, callback: Function) {
     this.confirm
       .fire({
-        title
+        title,
       })
-      .then(result => {
+      .then((result) => {
         if (result.isConfirmed) {
           callback();
         }
@@ -416,10 +417,10 @@ export default class RequestDetail extends Vue {
     } catch (e) {
       this.suggestRequests = null;
       const message =
-        e.response.data.message || "Xảy ra lỗi! Xin vui lòng thử lại";
+        (e as any).response.data.message || "Xảy ra lỗi! Xin vui lòng thử lại";
       this.toastError.fire({
         icon: "error",
-        title: message
+        title: message,
       });
     }
   }
@@ -431,14 +432,14 @@ export default class RequestDetail extends Vue {
           path: "/login",
           icon: "sign-in-alt",
           text: "Đăng nhập",
-          class: "text-success"
+          class: "text-success",
         },
         {
           path: "/signup",
           icon: "user-plus",
           text: "Đăng ký",
-          class: "text-primary"
-        }
+          class: "text-primary",
+        },
       ];
     }
 
@@ -448,14 +449,14 @@ export default class RequestDetail extends Vue {
           path: "/create-request",
           icon: "pencil-alt",
           text: "Tạo yêu cầu",
-          class: "text-success"
+          class: "text-success",
         },
         {
           path: "/mentors",
           icon: "user-check",
           text: "Thuê mentor",
-          class: "text-violet"
-        }
+          class: "text-violet",
+        },
       ];
     }
 
@@ -466,8 +467,8 @@ export default class RequestDetail extends Vue {
             path: "/update-request/" + this.request?.id,
             icon: "pencil-alt",
             text: "Chỉnh sửa yêu cầu",
-            class: "text-warning"
-          }
+            class: "text-warning",
+          },
         ];
       } else return [];
     }
@@ -478,7 +479,7 @@ export default class RequestDetail extends Vue {
     if (!this.request)
       return {
         text: "",
-        class: ""
+        class: "",
       };
     return RequestStatus[this.request.status];
   }
@@ -514,7 +515,7 @@ export default class RequestDetail extends Vue {
     const now = new Date().getTime();
     this.timeLeft = startTime + 5 * 60 * 1000 - now;
     if (this.timeLeft < 0) return;
-    this.timer = setInterval(() => {
+    this.timer = window.setInterval(() => {
       if (this.timeLeft <= 0) {
         this.timeLeft = -1;
         clearInterval(this.timer);
@@ -627,7 +628,7 @@ export default class RequestDetail extends Vue {
       if (response && response.status === 200) this.reloadPage();
     } catch (e) {
       const message =
-        e.response.data.message || "Xảy ra lỗi! Xin vui lòng thử lại";
+        (e as any).response.data.message || "Xảy ra lỗi! Xin vui lòng thử lại";
       this.toastError.fire({ icon: "error", title: message });
     }
   }
@@ -639,7 +640,7 @@ export default class RequestDetail extends Vue {
       if (response && response.status === 200) this.reloadPage();
     } catch (e) {
       const message =
-        e.response.data.message || "Xảy ra lỗi! Xin vui lòng thử lại";
+        (e as any).response.data.message || "Xảy ra lỗi! Xin vui lòng thử lại";
       this.toastError.fire({ icon: "error", title: message });
     }
   }
@@ -651,7 +652,7 @@ export default class RequestDetail extends Vue {
       if (response && response.status === 200) this.reloadPage();
     } catch (e) {
       const message =
-        e.response.data.message || "Xảy ra lỗi! Xin vui lòng thử lại";
+        (e as any).response.data.message || "Xảy ra lỗi! Xin vui lòng thử lại";
       this.toastError.fire({ icon: "error", title: message });
     }
   }
@@ -663,7 +664,7 @@ export default class RequestDetail extends Vue {
       if (response && response.status === 200) this.reloadPage();
     } catch (e) {
       const message =
-        e.response.data.message || "Xảy ra lỗi! Xin vui lòng thử lại";
+        (e as any).response.data.message || "Xảy ra lỗi! Xin vui lòng thử lại";
       this.toastError.fire({ icon: "error", title: message });
     }
   }
@@ -675,7 +676,7 @@ export default class RequestDetail extends Vue {
       if (response && response.status === 200) this.reloadPage();
     } catch (e) {
       const message =
-        e.response.data.message || "Xảy ra lỗi! Xin vui lòng thử lại";
+        (e as any).response.data.message || "Xảy ra lỗi! Xin vui lòng thử lại";
       this.toastError.fire({ icon: "error", title: message });
     }
   }
@@ -689,7 +690,7 @@ export default class RequestDetail extends Vue {
       if (response && response.status === 200) this.reloadPage();
     } catch (e) {
       const message =
-        e.response.data.message || "Xảy ra lỗi! Xin vui lòng thử lại";
+        (e as any).response.data.message || "Xảy ra lỗi! Xin vui lòng thử lại";
       this.toastError.fire({ icon: "error", title: message });
     }
   }

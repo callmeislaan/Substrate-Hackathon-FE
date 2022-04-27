@@ -155,7 +155,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Watch } from "vue-property-decorator";
 
 import { PostRequest, Request } from "@/types/request";
 import { Skills } from "@/types/skill";
@@ -168,10 +168,8 @@ import DatePicker from "vue2-datepicker";
 
 import Swal from "sweetalert2";
 import { ToastError } from "@/mixins/sweetalert.mixin";
-
-// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-// @ts-ignore
-import api from "../../connection.js";
+import getPolkadotAPI from "../../connection";
+import { ApiPromise } from "@polkadot/api";
 
 @Component({
   components: {
@@ -182,7 +180,29 @@ import api from "../../connection.js";
 export default class CreateRequestForm extends Vue {
   deadlineDate: string | null = null;
   deadlineTime: string | null = null;
+  apiQuerySystem: any = null;
 
+  created() {
+    this.getChainProperties();
+  }
+  async getChainProperties() {
+    try {
+      const api: ApiPromise = await getPolkadotAPI();
+      this.apiQuerySystem = api.query.system;
+      // Retrieve the chain name
+      const chain = await api.rpc.system.chain();
+
+      // Retrieve the latest header
+      const lastHeader = await api.rpc.chain.getHeader();
+
+      // Log the information
+      console.log(
+        `${chain}: last block #${lastHeader.number} has hash ${lastHeader.hash}`
+      );
+    } catch (e) {
+      console.log(e);
+    }
+  }
   get deadlineTimestamp() {
     if (this.deadlineDate != null && this.deadlineTime != null) {
       const date = new Date(this.deadlineDate);
@@ -235,9 +255,37 @@ export default class CreateRequestForm extends Vue {
     this.request.skills = skills;
   }
 
+  @Watch("apiQuerySystem")
+  onPropertyChanged(value: any, oldValue: any) {
+    if (this.apiQuerySystem) {
+      this.apiQuerySystem.events((events: any) => {
+        console.log(`\nReceived ${events.length} events:`);
+
+        // Loop through the Vec<EventRecord>
+        events.forEach((record: any) => {
+          // Extract the phase, event and the event types
+          const { event, phase } = record;
+          const types = event.typeDef;
+
+          // Show what we are busy with
+          console.log(
+            `\t${event.section}:${event.method}:: (phase=${phase.toString()})`
+          );
+          console.log(`\t\t${event.meta.documentation}`);
+
+          // Loop through each of the parameters, displaying the type and data
+          event.data.forEach((data: any, index: number) => {
+            console.log(`\t\t\t${types[index].type}: ${data.toString()}`);
+          });
+        });
+      });
+    }
+  }
+
   async createRequest() {
     const loader = this.$loading.show();
     if (!this.request) return;
+
     const params: PostRequest = {
       deadline: this.deadlineTimestamp,
       title: this.request.title,
@@ -248,18 +296,49 @@ export default class CreateRequestForm extends Vue {
         : [],
     };
     try {
-      const myapi = await api;
-      console.log("myapi", myapi);
-      const response = await requestService.createRequest(params);
-      if (response.status == 200) {
-        this.$router.push({
-          name: "RequestDetail",
-          params: { id: response.data.id },
+      const api: ApiPromise = await getPolkadotAPI();
+      await api.tx["palletForum"]["createNewThread"]({
+        topic: 0,
+        title: [1],
+        content: [1],
+        priority: 0,
+        price: 1,
+        closeTime: 1,
+      });
+      this.apiQuerySystem.events((events: any) => {
+        console.log(`\nReceived ${events.length} events:`);
+
+        // Loop through the Vec<EventRecord>
+        events.forEach((record: any) => {
+          // Extract the phase, event and the event types
+          const { event, phase } = record;
+          const types = event.typeDef;
+          console.log("event", event);
+          // Show what we are busy with
+          console.log(
+            `\t${event.section}:${event.method}:: (phase=${phase.toString()})`
+          );
+          console.log(`\t\t${event.meta.documentation}`);
+
+          // Loop through each of the parameters, displaying the type and data
+          event.data.forEach((data: any, index: number) => {
+            console.log(`\t\t\t${types[index].type}: ${data.toString()}`);
+          });
         });
-      }
+      });
+      const response = await requestService.createRequest(params);
+      //   if (response.status == 200) {
+      //     this.$router.push({
+      //       name: "RequestDetail",
+      //       params: { id: response.data.id },
+      //     });
+      //   }
     } catch (e) {
+      console.log(e);
+
+      if (!e?.response?.data) return;
       const message =
-        e.response.data.message || "Xảy ra lỗi! Xin vui lòng thử lại";
+        (e as any).response.data.message || "Xảy ra lỗi! Xin vui lòng thử lại";
       this.toastError.fire({ icon: "error", title: message });
     } finally {
       loader.hide();

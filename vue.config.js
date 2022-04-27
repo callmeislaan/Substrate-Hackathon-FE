@@ -1,6 +1,7 @@
 const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
+	transpileDependencies: ['vuetify'],
 	configureWebpack: {
 		module: {
 			rules: [
